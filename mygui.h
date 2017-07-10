@@ -27,6 +27,17 @@ extern GUI_CONST_STORAGE GUI_BITMAP bmQQ2;
 
 extern GUI_CONST_STORAGE GUI_BITMAP bmreturn;
 
+extern GUI_CONST_STORAGE GUI_BITMAP bmgitlogo;
+
+
+
+extern WM_HWIN CreateWinMain(void);
+extern WM_HWIN CreateWin1(void);
+extern WM_HWIN CreateWin2(void);
+extern WM_HWIN CreateWin3(void);
+extern WM_HWIN CreateWin4(void);
+extern WM_HWIN CreateWin5(void);
+extern WM_HWIN CreateWin6(void);
 typedef struct
 {
 	int C1;

@@ -271,7 +271,7 @@ WM_HWIN CreateHeaderWindow(void) {
 // USER START (Optionally insert additional public code)
 // USER END
 
-WM_HWIN CreateWindowmain(void);
+WM_HWIN CreateWinMain(void);
 extern WM_HWIN CreateWin1(void);
 extern WM_HWIN CreateWin3(void);
 void MainTask(void) {
@@ -294,17 +294,17 @@ void MainTask(void) {
 
 
 
-	GUI_RECT Rect = { 325, 308,475, 342 };
+	GUI_RECT Rect = { 304, 360, 496, 390 };
 
 	for (i = 0; i < 3; i++)
 	{
-		for (j = 0; j < 40; j++)
+		for (j = 0; j < 65; j++)
 		{
-			GUI_DrawGradientV(0,0,799,479,GUI_BLUE,GUI_BLUE);
+			GUI_DrawBitmap(&bmgitlogo, 290, 10);
 			GUI_SetColor(GUI_WHITE);
-			GUI_FillRoundedRect(330, 308, 480, 342, 10);
+			GUI_DrawRoundedFrame(300,355,500,395,10,2);
 			GUI_SetClipRect(&Rect);
-			GUI_DrawBitmap(&bmbar, 280 + j * 5, 305);
+			GUI_DrawBitmap(&bmbar, 250 + j * 4, 360);
 			GUI_SetClipRect(NULL);
 			GUI_Delay(20);
 		}
@@ -312,7 +312,7 @@ void MainTask(void) {
 
 	GUI_EnableAlpha(1);
 //	CreateWin1();
-	CreateWindowmain();
+	CreateWinMain();
 	WIN_Header = CreateHeaderWindow();
 	while (1) {
 		GUI_Exec();

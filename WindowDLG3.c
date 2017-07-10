@@ -24,7 +24,7 @@
 #include "DIALOG.h"
 #include "GUI.h"
 #include "stdint.h"
-
+#include "mygui.h"
 /*********************************************************************
 *
 *       Defines
@@ -9632,6 +9632,8 @@ typedef struct {
 
 /* 用于桌面ICONVIEW图标的创建 */
 static const BITMAP_ITEM _aBitmapItem[] = {
+	{ &bmtarget, "SoftWare" },
+
 	{ &bmComputer, "Computer" },
 	{ &bmSettings, "Settings" },
 	{ &bmAD7606, "ADC" },
@@ -9687,7 +9689,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	int          Id;
 	ICONVIEW_Handle hIcon;
 	//	int sel;
-	char Disp[20] = "MenuIcon Test";
+//	char Disp[20] = "MenuIcon Test";
 	// USER START (Optionally insert additional variables)
 	// USER END
 
@@ -9740,7 +9742,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		GUI_SetColor(GUI_GREEN);
 		GUI_SetTextMode(GUI_TM_TRANS);
 
-		GUI_DispStringHCenterAt(Disp, LCD_GetXSize() / 2, 10);
+//		GUI_DispStringHCenterAt(Disp, LCD_GetXSize() / 2, 10);
 
 		GUI_SetAlpha(0x90);
 		GUI_DrawBitmap(&bmapple, 300, 200);
@@ -9786,9 +9788,15 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 				switch (ICONVIEW_GetSel(pMsg->hWinSrc))//pMsg->hWinSrc
 				{
+				case 0:
+					hItem = pMsg->hWin;
+					GUI_EndDialog(hItem, 1);
+					CreateWin6();
+					break;				
 				case 1:
 					hItem = pMsg->hWin;
 					GUI_EndDialog(hItem, 1);
+					//WM_HideWindow(hItem);
 					CreateFramewin1();
 
 					break;
@@ -9809,14 +9817,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 					hItem = pMsg->hWin;
 					GUI_EndDialog(hItem, 1);
 					break;
-				case 0:
-					CreateWindow2();
-					GUI_EndDialog(hItem, 1);
-					break;
+
 				case 6:
-					Dis_Flag = 0;
-					//	Auto2();
-					//GUI_EndDialog(hItem,1);
+					hItem = pMsg->hWin;
+					GUI_EndDialog(hItem, 1);
+					CreateWin1();
 					break;
 				case 8:
 					Dis_Flag = 1;
@@ -9883,8 +9888,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 *       CreateWindow
 */
 extern uint32_t TS_Orientation;
-WM_HWIN CreateWindow(void);
-WM_HWIN CreateWindow(void) {
+WM_HWIN CreateWinMain(void);
+WM_HWIN CreateWinMain(void) {
 	WM_HWIN hWin;
 	ICONVIEW_Handle hIcon;
 

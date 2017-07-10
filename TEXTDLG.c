@@ -1561,7 +1561,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
-									CreateWindow();	
+									CreateWinMain();	
 									hItem = pMsg->hWin;
 									WM_DeleteWindow(hItem);
         // USER END

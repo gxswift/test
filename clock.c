@@ -268,7 +268,7 @@ WM_InvalidateWindow(pMsg->hWin);
 			//WM_DeleteWindow(hItem);			
 	//		WM_DeleteTimer(hTimer);	
 			GUI_EndDialog(hItem,1);
-			CreateWindow();
+			CreateWinMain();
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
