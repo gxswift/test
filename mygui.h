@@ -19,6 +19,11 @@ extern GUI_CONST_STORAGE GUI_BITMAP bmapple;
 
 extern GUI_CONST_STORAGE GUI_BITMAP bmQQlogo;
 
+extern GUI_CONST_STORAGE GUI_BITMAP bmbar;
+
+extern GUI_CONST_STORAGE GUI_BITMAP bmlogo;
+
+extern GUI_CONST_STORAGE GUI_BITMAP bmQQ2;
 typedef struct
 {
 	int C1;

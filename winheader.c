@@ -23,6 +23,7 @@
 
 #include "DIALOG.h"
 #include "stdio.h"
+#include "mygui.h"
 /*********************************************************************
 *
 *       Defines
@@ -51,8 +52,8 @@
 #define DATE_DIS (WM_USER+1)
 // USER START (Optionally insert additional defines)
 // USER END
-extern GUI_CONST_STORAGE GUI_BITMAP bmlogo;
-extern GUI_CONST_STORAGE GUI_BITMAP bmQQ2;
+//extern GUI_CONST_STORAGE GUI_BITMAP bmlogo;
+//extern GUI_CONST_STORAGE GUI_BITMAP bmQQ2;
 /*********************************************************************
 *
 *       Static data
@@ -274,6 +275,7 @@ WM_HWIN CreateWindowmain(void);
 extern WM_HWIN CreateWin1(void);
 extern WM_HWIN CreateWin3(void);
 void MainTask(void) {
+	int i, j;
 	WM_SetCreateFlags(WM_CF_MEMDEV);
 	GUI_Init();
 	Date.Year = 2017;
@@ -289,6 +291,24 @@ void MainTask(void) {
 	PROGBAR_SetDefaultSkin(PROGBAR_SKIN_FLEX);
 	SPINBOX_SetDefaultSkin(SPINBOX_SKIN_FLEX);
 	FRAMEWIN_SetDefaultSkin(FRAMEWIN_SKIN_FLEX);
+
+
+
+	GUI_RECT Rect = { 325, 308,475, 342 };
+
+	for (i = 0; i < 5; i++)
+	{
+		for (j = 0; j < 40; j++)
+		{
+			GUI_DrawGradientV(0,0,799,479,GUI_BLUE,GUI_BLUE);
+			GUI_SetColor(GUI_WHITE);
+			GUI_FillRoundedRect(330, 308, 480, 342, 10);
+			GUI_SetClipRect(&Rect);
+			GUI_DrawBitmap(&bmbar, 280 + j * 5, 305);
+			GUI_SetClipRect(NULL);
+			GUI_Delay(20);
+		}
+	}
 
 	GUI_EnableAlpha(1);
 //	CreateWin1();
