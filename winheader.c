@@ -296,7 +296,7 @@ void MainTask(void) {
 
 	GUI_RECT Rect = { 325, 308,475, 342 };
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 40; j++)
 		{

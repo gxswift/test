@@ -81,7 +81,8 @@ static const BITMAP_ITEM _aBitmapItem[] = {
 
   {&bmQQ,        "QQ"},
   {&bmwechat,  "WeChat"},
-  { &bmapple, "Apple" }
+  { &bmapple, "Apple" },
+  { &bmreturn, "Return" }
 };
 /*********************************************************************
 *
