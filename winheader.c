@@ -301,6 +301,8 @@ void MainTask(void) {
 		for (j = 0; j < 65; j++)
 		{
 			GUI_DrawBitmap(&bmgitlogo, 290, 10);
+			GUI_SetFont(&GUI_Font24B_ASCII);
+			GUI_DispStringHCenterAt("Build software better, together.", 400, 310);
 			GUI_SetColor(GUI_WHITE);
 			GUI_DrawRoundedFrame(300,355,500,395,10,2);
 			GUI_SetClipRect(&Rect);
