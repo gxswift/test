@@ -9801,7 +9801,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 					break;
 				case 3:
-					CreatePalette();
+					Clock_Fun();
 					hItem = pMsg->hWin;
 					GUI_EndDialog(hItem, 1);
 					break;
@@ -9809,8 +9809,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 					Select = 0;
 					hItem = pMsg->hWin;
 					GUI_EndDialog(hItem, 1);
-					Clock_Fun();
-
+					CreatePalette();
 					break;
 				case 5:
 					CreateTEXT();

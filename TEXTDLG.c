@@ -1490,8 +1490,8 @@ GUI_CONST_STORAGE GUI_FONT GUI_Font4 = {
 *       _aDialogCreate
 */
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
-  { FRAMEWIN_CreateIndirect, "TEXT", ID_FRAMEWIN_0, 0, 0, 240, 320, 0, 0x64, 0 },
-  { BUTTON_CreateIndirect, "EXIT", ID_BUTTON_0, 78, 234, 80, 45, 0, 0x0, 0 },
+  { FRAMEWIN_CreateIndirect, "TEXT", ID_FRAMEWIN_0, 0, 50, 800, 450, 0, 0x64, 0 },
+  { BUTTON_CreateIndirect, "EXIT", ID_BUTTON_0, 348, 270, 80, 45, 0, 0x0, 0 },
   // USER START (Optionally insert additional widgets)
   // USER END
 };
@@ -1523,16 +1523,16 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		case WM_PAINT:
 					GUI_SetFont(&GUI_Font0);
 		GUI_SetColor(GUI_RED);
-		GUI_DispStringAt("\xE6\x97\xA0\xE6\x8A\x97\xE9\x94\xAF\xE9\xBD\xBF\xE5\xAD\x97\xE4\xBD\x93",0,10);
+		GUI_DispStringHCenterAt("\xE6\x97\xA0\xE6\x8A\x97\xE9\x94\xAF\xE9\xBD\xBF\xE5\xAD\x97\xE4\xBD\x93",400,10);
 		
 			GUI_SetFont(&GUI_Font2);
-				GUI_DispStringAt("2\xE5\x80\x8D\xE6\x8A\x97\xE9\x94\xAF\xE9\xBD\xBF\xE5\xAD\x97\xE4\xBD\x93",0,60);
+			GUI_DispStringHCenterAt("2\xE5\x80\x8D\xE6\x8A\x97\xE9\x94\xAF\xE9\xBD\xBF\xE5\xAD\x97\xE4\xBD\x93", 400, 60);
 		
 			GUI_SetFont(&GUI_Font4);
-				GUI_DispStringAt("4\xE5\x80\x8D\xE6\x8A\x97\xE9\x94\xAF\xE9\xBD\xBF\xE5\xAD\x97\xE4\xBD\x93",0,110);
+			GUI_DispStringHCenterAt("4\xE5\x80\x8D\xE6\x8A\x97\xE9\x94\xAF\xE9\xBD\xBF\xE5\xAD\x97\xE4\xBD\x93", 400, 110);
 		
 		GUI_SetFont(&GUI_Font0);
-		GUI_DispStringAt("\xE4\xBD\x93",60,160);
+		GUI_DispStringAt("\xE4\xBD\x93",330,160);
 				GUI_SetFont(&GUI_Font2);
 		GUI_DispString("\xE4\xBD\x93");
 				GUI_SetFont(&GUI_Font4);

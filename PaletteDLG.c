@@ -258,14 +258,14 @@ GUI_CONST_STORAGE GUI_FONT GUI_Fontpat = {
 *       _aDialogCreate
 */
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
-	{ FRAMEWIN_CreateIndirect, "Palette", ID_FRAMEWIN_0, 0, 0, 240, 320, 0, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_0, 20, 60, 200, 20, 0, 0x0, 0 },
-	{ SPINBOX_CreateIndirect, "Spinbox", ID_SPINBOX_0, 130, 90, 80, 35, 0, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_1, 20, 130, 200, 20, 0, 0x0, 0 },
-	{ SPINBOX_CreateIndirect, "Spinbox", ID_SPINBOX_1, 130, 160, 80, 35, 0, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_2, 20, 200, 200, 20, 0, 0x0, 0 },
-	{ SPINBOX_CreateIndirect, "Spinbox", ID_SPINBOX_2, 130, 230, 80, 35, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Exit", ID_BUTTON_0, 160, 15, 40, 30, 0, 0x0, 0 },
+	{ FRAMEWIN_CreateIndirect, "Palette", ID_FRAMEWIN_0, 0, 50, 800, 430, 0, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_0, 120, 60, 220, 20, 0, 0x0, 0 },
+	{ SPINBOX_CreateIndirect, "Spinbox", ID_SPINBOX_0, 230, 90, 80, 35, 0, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_1, 120, 150, 220, 20, 0, 0x0, 0 },
+	{ SPINBOX_CreateIndirect, "Spinbox", ID_SPINBOX_1, 230, 180, 80, 35, 0, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_2, 120, 240, 220, 20, 0, 0x0, 0 },
+	{ SPINBOX_CreateIndirect, "Spinbox", ID_SPINBOX_2, 230, 270, 80, 35, 0, 0x0, 0 },
+	{ BUTTON_CreateIndirect, "Exit", ID_BUTTON_0, 650, 150, 70, 50, 0, 0x0, 0 },
 	// USER START (Optionally insert additional widgets)
 	// USER END
 };
@@ -296,38 +296,38 @@ static void _OnPaint(void) {
 	//
 	// Draw RGB values
 	//
-	GUI_DrawGradientV(0, 0, 239, 299, GUI_LIGHTBLUE, 0x009000);
+	GUI_DrawGradientV(0, 0, 799, 430, GUI_LIGHTBLUE, 0x009000);
 
 	GUI_SetColor(_aColorSep[0]);
-	GUI_FillRect(20, 90, 100, 120);
+	GUI_FillRect(20, 60, 100, 120);
 	GUI_SetColor(_aColorSep[1] << 8);
-	GUI_FillRect(20, 160, 100, 190);
+	GUI_FillRect(20, 150, 100, 210);
 	GUI_SetColor(((U32)_aColorSep[2]) << 16);
-	GUI_FillRect(20, 230, 100, 260);
+	GUI_FillRect(20, 240, 100, 300);
 	//
 	// Draw resulting color
 	//
 	GUI_SetColor((U32)_aColorSep[0] | (((U32)_aColorSep[1]) << 8) | (((U32)_aColorSep[2]) << 16));
-	GUI_FillRect(20, 10, 100, 50);
+	GUI_FillRect(400, 60, 600, 300);
 
 
 	GUI_SetColor(GUI_RED);
-	GUI_DrawRect(20, 90, 100, 120);
+	GUI_DrawRect(20, 60, 100, 120);
 
 	GUI_SetColor(GUI_GREEN);
-	GUI_DrawRect(20, 160, 100, 190);
+	GUI_DrawRect(20, 150, 100, 210);
 
 	GUI_SetColor(GUI_BLUE);
-	GUI_DrawRect(20, 230, 100, 260);
+	GUI_DrawRect(20, 240, 100, 300);
 
 	GUI_SetColor(GUI_WHITE);
-	GUI_DrawRect(20, 10, 100, 50);
+	GUI_DrawRect(400, 60, 600, 300);
 
 	GUI_SetBkColor(0x009000);
 	GUI_SetFont(&GUI_Fontpat);
 
 	GUI_SetColor(GUI_RED);
-	GUI_DispStringAt("\xE7\xBA\xA2", 60, 265);
+	GUI_DispStringAt("\xE7\xBA\xA2", 120, 340);
 
 	GUI_SetColor(GUI_GREEN);
 	GUI_DispString("\xE7\xBB\xBF");
@@ -350,7 +350,8 @@ static void _OnPaint(void) {
 GUI_RECT Rect1 = { 20, 90 + 25, 100, 120 + 25 };
 GUI_RECT Rect2 = { 20, 160 + 25, 100, 190 + 25 };
 GUI_RECT Rect3 = { 20, 230 + 25, 100, 260 + 25 };
-GUI_RECT Rect4 = { 20, 10 + 25, 100, 50 + 25 };
+
+GUI_RECT Rect4 = { 400, 10, 700, 200 };
 extern WM_HWIN CreateWindow(void);
 static void _cbDialog(WM_MESSAGE * pMsg) {
 	WM_HWIN hItem;
@@ -368,8 +369,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		// Initialization of 'Palette'
 		//
 		hItem = pMsg->hWin;
-		FRAMEWIN_SetFont(hItem, GUI_FONT_20_ASCII);
+		FRAMEWIN_SetTextColor(hItem, GUI_BLACK);
 		FRAMEWIN_SetTextAlign(hItem, GUI_TA_HCENTER | GUI_TA_VCENTER);
+		FRAMEWIN_SetFont(hItem, &GUI_Fontpat);
+		FRAMEWIN_SetText(hItem,"\xE8\xB0\x83\xE8\x89\xB2");
+
 
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_SPINBOX_0);
 		SPINBOX_SetBkColor(hItem, SPINBOX_CI_DISABLED, GUI_LIGHTBLUE);//SPINBOX_CI_ENABLED,SPINBOX_CI_PRESSED
@@ -450,8 +454,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_SPINBOX_0);
 				SPINBOX_SetValue(hItem, _aColorSep[0]);
-				WM_InvalidateRect(pMsg->hWin, &Rect1);
-				WM_InvalidateRect(pMsg->hWin, &Rect4);
+				WM_InvalidateWindow(pMsg->hWin);
 				// USER END
 				break;
 				// USER START (Optionally insert additional code for further notification handling)
@@ -480,8 +483,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_SLIDER_0);
 				SLIDER_SetValue(hItem, _aColorSep[0]);
 
-				WM_InvalidateRect(pMsg->hWin, &Rect1);
-				WM_InvalidateRect(pMsg->hWin, &Rect4);
+				WM_InvalidateWindow(pMsg->hWin);
 
 				// USER END
 				break;
@@ -506,8 +508,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_SPINBOX_1);
 				SPINBOX_SetValue(hItem, _aColorSep[1]);
-				WM_InvalidateRect(pMsg->hWin, &Rect2);
-				WM_InvalidateRect(pMsg->hWin, &Rect4);
+				WM_InvalidateWindow(pMsg->hWin);
 				// USER END
 				break;
 				// USER START (Optionally insert additional code for further notification handling)
@@ -536,8 +537,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_SLIDER_1);
 				SLIDER_SetValue(hItem, _aColorSep[1]);
 
-				WM_InvalidateRect(pMsg->hWin, &Rect2);
-				WM_InvalidateRect(pMsg->hWin, &Rect4);
+				WM_InvalidateWindow(pMsg->hWin);
 				// USER END
 				break;
 				// USER START (Optionally insert additional code for further notification handling)
@@ -561,8 +561,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_SPINBOX_2);
 				SPINBOX_SetValue(hItem, _aColorSep[2]);
-				WM_InvalidateRect(pMsg->hWin, &Rect3);
-				WM_InvalidateRect(pMsg->hWin, &Rect4);
+				WM_InvalidateWindow(pMsg->hWin);
 				// USER END
 				break;
 				// USER START (Optionally insert additional code for further notification handling)
@@ -590,8 +589,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_SLIDER_2);
 				SLIDER_SetValue(hItem, _aColorSep[2]);
-				WM_InvalidateRect(pMsg->hWin, &Rect3);
-				WM_InvalidateRect(pMsg->hWin, &Rect4);
+				WM_InvalidateWindow(pMsg->hWin);
 				// USER END
 				break;
 				// USER START (Optionally insert additional code for further notification handling)
