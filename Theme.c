@@ -22,7 +22,7 @@
 // USER END
 
 #include "DIALOG.h"
-
+#include "mygui.h"
 /*********************************************************************
 *
 *       Defines
@@ -54,7 +54,7 @@
 *       _aDialogCreate
 */
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
-	{ FRAMEWIN_CreateIndirect, "Framewin", ID_FRAMEWIN_0, 50, 40, 190, 280, 0, 0x64, 0 },
+	{ FRAMEWIN_CreateIndirect, "Theme", ID_FRAMEWIN_0, 0, 50, 799, 449, 0, 0x64, 0 },
 	{ DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_0, 35, 51, 120, 80, 0, 0x0, 0 },
 	{ BUTTON_CreateIndirect, "OK", ID_BUTTON_0, 24, 194, 40, 40, 0, 0x0, 0 },
 	{ BUTTON_CreateIndirect, "Cancel", ID_BUTTON_1, 122, 196, 40, 40, 0, 0x0, 0 },
@@ -71,13 +71,45 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 */
 
 // USER START (Optionally insert additional static code)
+
+
+ColorChange C_Change[]=
+{
+	{ 0x000FFF, 0x00F0FF},
+	{ 0x000FFF, 0x0080FF},
+	{ 0x000FFF, 0x00F08F},
+	{ 0xF0005F, 0x00F0FF},
+	{ 0x800FFF, 0x00F000},
+	{ 0x000FFF, 0x0080FF},
+	{ 0x800FFF, 0x00F000},
+	{ GUI_BLUE, 0x00F000},
+	{ 0x800FFF, GUI_LIGHTBLUE}
+};
+
+int *BKbmp[] = {&bmapple};
+
+int ColorSet;
+
+void Theme_Paint(int ColorSet,int BmpSet)
+{
+	GUI_DrawGradientV(0,0,799,449,C_Change[ColorSet].C1,C_Change[ColorSet].C2);
+	
+	GUI_SetAlpha(0x90);
+	GUI_DrawBitmap(BKbmp[BmpSet], 300, 200);
+	GUI_SetAlpha(0);
+
+
+}
+
+
 // USER END
 
 /*********************************************************************
 *
 *       _cbDialog
 */
-int ColorSet;
+
+
 extern WM_HWIN CreateWindow(void);
 static void _cbDialog(WM_MESSAGE * pMsg) {
 	WM_HWIN hItem;
@@ -89,46 +121,9 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 	switch (pMsg->MsgId) {
 	case WM_PAINT:
-		switch (color)
-		{
-		case 0:
-			GUI_DrawGradientV(0, 0, 190, 280, 0x000FFF, 0x00F0FF);
-			break;
+		Theme_Paint (color,0);
 
-		case 1:
-			GUI_DrawGradientV(0, 0, 190, 280, 0x000FFF, 0x0080FF);
-			break;
 
-		case 2:
-			GUI_DrawGradientV(0, 0, 190, 280, 0x000FFF, 0x00F08F);
-			break;
-
-		case 3:
-			GUI_DrawGradientV(0, 0, 190, 280, 0xF0005F, 0x00F0FF);
-			break;
-
-		case 4:
-			GUI_DrawGradientV(0, 0, 190, 280, 0x800FFF, 0x00F000);
-			break;
-
-		case 5:
-			GUI_DrawGradientV(0, 0, 190, 280, 0x000FFF, 0x0080FF);
-			break;
-
-		case 6:
-			GUI_DrawGradientV(0, 0, 190, 280, 0x800FFF, 0x00F000);
-			break;
-
-		case 7:
-			GUI_DrawGradientV(0, 0, 190, 280, GUI_BLUE, 0x00F000);
-			break;
-
-		case 8:
-			GUI_DrawGradientV(0, 0, 190, 280, 0x800FFF, GUI_LIGHTBLUE);
-			break;
-
-		default:break;
-		}
 		break;
 	case	WM_CREATE:
 
