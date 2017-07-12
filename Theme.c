@@ -33,6 +33,7 @@
 #define ID_DROPDOWN_0 (GUI_ID_USER + 0x01)
 #define ID_BUTTON_0 (GUI_ID_USER + 0x02)
 #define ID_BUTTON_1 (GUI_ID_USER + 0x03)
+#define ID_BUTTON_2 (GUI_ID_USER + 0x05)
 #define ID_TEXT_0 (GUI_ID_USER + 0x04)
 
 
@@ -55,9 +56,10 @@
 */
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 	{ FRAMEWIN_CreateIndirect, "Theme", ID_FRAMEWIN_0, 0, 50, 799, 449, 0, 0x64, 0 },
-	{ DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_0, 35, 51, 120, 80, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "OK", ID_BUTTON_0, 24, 194, 40, 40, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Cancel", ID_BUTTON_1, 122, 196, 40, 40, 0, 0x0, 0 },
+	{ DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_0, 40, 50, 200, 230, 0, 0x0, 0 },
+	{ BUTTON_CreateIndirect, "OK", ID_BUTTON_0, 60, 300, 50, 40, 0, 0x0, 0 },
+	{ BUTTON_CreateIndirect, "Cancel", ID_BUTTON_1, 160, 300, 50, 40, 0, 0x0, 0 },
+	{ BUTTON_CreateIndirect, "CHOOSE BMP", ID_BUTTON_2, 440, 280, 200, 60, 0, 0x0, 0 },
 	{ TEXT_CreateIndirect, "Text", ID_TEXT_0, 62, 15, 80, 20, 0, 0x64, 0 },
 	// USER START (Optionally insert additional widgets)
 	// USER END
@@ -75,7 +77,7 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 
 ColorChange C_Change[]=
 {
-	{ 0x000FFF, 0x00F0FF},
+	{ 0xFFA0A0, 0xF08080 },
 	{ 0x000FFF, 0x0080FF},
 	{ 0x000FFF, 0x00F08F},
 	{ 0xF0005F, 0x00F0FF},
@@ -86,16 +88,17 @@ ColorChange C_Change[]=
 	{ 0x800FFF, GUI_LIGHTBLUE}
 };
 
-int *BKbmp[] = {&bmapple};
+int *BKbmp[] = {&bmapple,&bmQQ};
 
 int ColorSet;
 static int color;
+int BKSet = 1;
 void Theme_Paint()
 {
 	GUI_DrawGradientV(0,0,799,449,C_Change[color].C1,C_Change[color].C2);
 	
 	GUI_SetAlpha(0x90);
-	GUI_DrawBitmap(BKbmp[0], 300, 200);
+	GUI_DrawBitmap(BKbmp[BKSet], 320, 150);
 	GUI_SetAlpha(0);
 }
 
@@ -119,8 +122,16 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 	switch (pMsg->MsgId) {
 	case WM_PAINT:
-		Theme_Paint ();
 
+		Theme_Paint ();
+		GUI_SetColor(GUI_LIGHTRED);
+		if (BKSet)
+			GUI_FillRoundedRect(560, 40, 712, 250, 20);
+		else
+			GUI_FillRoundedRect(280,40, 450,250,20);
+		GUI_DrawBitmap(BKbmp[0], 300, 50);
+
+		GUI_DrawBitmap(BKbmp[1], 570, 50);
 
 		break;
 	case	WM_CREATE:
@@ -131,13 +142,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		//
 		// Initialization of 'Framewin'
 		//
-
+		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_2);
+		BUTTON_SetFont(hItem, &GUI_Font32B_ASCII);
 
 
 		hItem = pMsg->hWin;
-		FRAMEWIN_SetText(hItem, "Setting");
+		FRAMEWIN_SetText(hItem, "TMEME");
 		FRAMEWIN_SetTextAlign(hItem, GUI_TA_HCENTER | GUI_TA_VCENTER);
-		FRAMEWIN_SetTitleHeight(hItem, 20);
+		FRAMEWIN_SetTitleHeight(hItem, 40);
 		FRAMEWIN_SetFont(hItem, GUI_FONT_20B_1);
 		//
 		// Initialization of 'Dropdown'
@@ -154,8 +166,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		DROPDOWN_AddString(hItem, "Color9");
 		DROPDOWN_SetAutoScroll(hItem, 1);
 
-		DROPDOWN_SetFont(hItem, GUI_FONT_16B_ASCII);
-		DROPDOWN_SetItemSpacing(hItem, 5);
+		DROPDOWN_SetFont(hItem, GUI_FONT_20B_ASCII);
+		DROPDOWN_SetItemSpacing(hItem,25);
 		DROPDOWN_SetBkColor(hItem, DROPDOWN_CI_SEL, GUI_LIGHTBLUE);
 
 		DROPDOWN_SetSel(hItem, color);
@@ -234,6 +246,30 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			break;
 			// USER START (Optionally insert additional code for further Ids)
 			// USER END
+		case ID_BUTTON_2: // Notifications sent by 'Cancel'
+			switch (NCode) {
+			case WM_NOTIFICATION_CLICKED:
+				// USER START (Optionally insert code for reacting on notification message)
+				// USER END
+				break;
+			case WM_NOTIFICATION_RELEASED:
+				// USER START (Optionally insert code for reacting on notification message)
+				BKSet ^= 1;
+				hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_2);
+				
+				if (BKSet)
+				BUTTON_SetText(hItem,"QQ");
+				else
+				BUTTON_SetText(hItem, "APPLE");
+				WM_InvalidateWindow(pMsg->hWin);
+				// USER END
+				break;
+				// USER START (Optionally insert additional code for further notification handling)
+				// USER END
+			}
+			break;
+			// USER START (Optionally insert additional code for further Ids)
+			// USER END	
 		}
 		break;
 		// USER START (Optionally insert additional message handling)

@@ -63,14 +63,13 @@
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 	{ WINDOW_CreateIndirect, "Window", ID_WINDOW_0, 0, 50, 800, 430, 0, 0x0, 0 },
 	{ LISTVIEW_CreateIndirect, "Listview", ID_LISTVIEW_0, 20, 20, 400, 380, 0, 0x0, 0 },
+
 	{ BUTTON_CreateIndirect, "Stop", ID_BUTTON_0, 681, 340, 60, 40, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Control", ID_BUTTON_1, 520, 340, 60, 40, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "info", ID_BUTTON_2, 440, 270, 60, 40, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Time Set", ID_BUTTON_3, 440, 340, 60, 40, 0, 0x0, 0 },
+	{ BUTTON_CreateIndirect, "EXIT", ID_BUTTON_1, 480, 280, 100, 80, 0, 0x0, 0 },
 	{ BUTTON_CreateIndirect, "Start", ID_BUTTON_4, 680, 270, 60, 40, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Setting", ID_BUTTON_5, 520, 270, 60, 40, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Output", ID_BUTTON_6, 600, 270, 60, 40, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Date Set", ID_BUTTON_7, 600, 340, 60, 40, 0, 0x0, 0 },
+
+
+
 	{ PROGBAR_CreateIndirect, "Progbar", ID_PROGBAR_0, 440, 20, 310, 20, 0, 0x0, 0 },
 	{ PROGBAR_CreateIndirect, "Progbar", ID_PROGBAR_1, 440, 60, 310, 20, 0, 0x0, 0 },
 	// USER START (Optionally insert additional widgets)
@@ -128,7 +127,9 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		cnt = 0;
 		break;
 	case WM_PAINT:
-		GUI_DrawGradientH(0, 0, 799, 439, GUI_WHITE, GUI_LIGHTBLUE);
+		Theme_Paint();
+
+
 		break;
 	case WM_INIT_DIALOG:
 		//
@@ -230,38 +231,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				// USER END
 			}
 			break;
-		case ID_BUTTON_2: // Notifications sent by 'information'
-			switch (NCode) {
-			case WM_NOTIFICATION_CLICKED:
-				// USER START (Optionally insert code for reacting on notification message)
-				// USER END
-				break;
-			case WM_NOTIFICATION_RELEASED:
-				// USER START (Optionally insert code for reacting on notification message)
-				WM_DeleteWindow(pMsg->hWin);
-				CreateWin5();
-				// USER END
-				break;
-				// USER START (Optionally insert additional code for further notification handling)
-				// USER END
-			}
-			break;
-		case ID_BUTTON_3: // Notifications sent by 'Button3'
-			switch (NCode) {
-			case WM_NOTIFICATION_CLICKED:
-				// USER START (Optionally insert code for reacting on notification message)
-				// USER END
-				break;
-			case WM_NOTIFICATION_RELEASED:
-				// USER START (Optionally insert code for reacting on notification message)
-				WM_DeleteWindow(pMsg->hWin);
-				CreateWin4();
-				// USER END
-				break;
-				// USER START (Optionally insert additional code for further notification handling)
-				// USER END
-			}
-			break;
 		case ID_BUTTON_4: // Notifications sent by 'Start'
 			switch (NCode) {
 			case WM_NOTIFICATION_CLICKED:
@@ -275,52 +244,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 					Start_Flag = 1;
 					hTimer = WM_CreateTimer(pMsg->hWin, 0, 10, 0);
 				}
-				// USER END
-				break;
-				// USER START (Optionally insert additional code for further notification handling)
-				// USER END
-			}
-			break;
-		case ID_BUTTON_5: // Notifications sent by 'Setting'
-			switch (NCode) {
-			case WM_NOTIFICATION_CLICKED:
-				// USER START (Optionally insert code for reacting on notification message)
-				// USER END
-				break;
-			case WM_NOTIFICATION_RELEASED:
-				// USER START (Optionally insert code for reacting on notification message)
-				WM_DeleteWindow(pMsg->hWin);
-				CreateWin2();
-				// USER END
-				break;
-				// USER START (Optionally insert additional code for further notification handling)
-				// USER END
-			}
-			break;
-		case ID_BUTTON_6: // Notifications sent by 'Output'
-			switch (NCode) {
-			case WM_NOTIFICATION_CLICKED:
-				// USER START (Optionally insert code for reacting on notification message)
-				// USER END
-				break;
-			case WM_NOTIFICATION_RELEASED:
-				// USER START (Optionally insert code for reacting on notification message)
-				// USER END
-				break;
-				// USER START (Optionally insert additional code for further notification handling)
-				// USER END
-			}
-			break;
-		case ID_BUTTON_7: // Notifications sent by 'Button7'
-			switch (NCode) {
-			case WM_NOTIFICATION_CLICKED:
-				// USER START (Optionally insert code for reacting on notification message)
-				// USER END
-				break;
-			case WM_NOTIFICATION_RELEASED:
-				// USER START (Optionally insert code for reacting on notification message)
-				WM_DeleteWindow(pMsg->hWin);
-				CreateWin3();
 				// USER END
 				break;
 				// USER START (Optionally insert additional code for further notification handling)

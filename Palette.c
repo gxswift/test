@@ -296,7 +296,8 @@ static void _OnPaint(void) {
 	//
 	// Draw RGB values
 	//
-	GUI_DrawGradientV(0, 0, 799, 430, GUI_LIGHTBLUE, 0x009000);
+		Theme_Paint();
+
 
 	GUI_SetColor(_aColorSep[0]);
 	GUI_FillRect(20, 60, 100, 120);
@@ -322,6 +323,8 @@ static void _OnPaint(void) {
 
 	GUI_SetColor(GUI_WHITE);
 	GUI_DrawRect(400, 60, 600, 300);
+
+	GUI_SetTextMode(GUI_TM_TRANS);
 
 	GUI_SetBkColor(0x009000);
 	GUI_SetFont(&GUI_Fontpat);

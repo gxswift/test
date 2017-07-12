@@ -121,58 +121,9 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	switch (pMsg->MsgId) {
 
 	case WM_PAINT:
-		switch (ColorSet)
-		{
-		case 0:
-			GUI_DrawGradientV(0, 0, 799, 429, 0x000FFF, 0x00F0FF);
-			break;
+		Theme_Paint();
 
-		case 1:
-			GUI_DrawGradientV(0, 0, 799, 429, 0x000FFF, 0x0080FF);
-			break;
 
-		case 2:
-			GUI_DrawGradientV(0, 0, 799, 429, 0x000FFF, 0x00F08F);
-			break;
-
-		case 3:
-			GUI_DrawGradientV(0, 0, 799, 429, 0xF0005F, 0x00F0FF);
-			break;
-
-		case 4:
-			GUI_DrawGradientV(0, 0, 799, 429, 0x800FFF, 0x00F000);
-			break;
-
-		case 5:
-			GUI_DrawGradientV(0, 0, 799, 429, 0x000FFF, 0x0080FF);
-			break;
-
-		case 6:
-			GUI_DrawGradientV(0, 0, 799, 429, 0x800FFF, 0x00F000);
-			break;
-
-		case 7:
-			GUI_DrawGradientV(0, 0, 799, 429, GUI_BLUE, 0x00F000);
-			break;
-
-		case 8:
-			GUI_DrawGradientV(0, 0, 799, 429, 0x800FFF, GUI_LIGHTBLUE);
-			break;
-
-		default:break;
-
-		}
-
-		///	GUI_SetFont(&GUI_Font24_ASCII);
-		//	GUI_SetColor(GUI_GREEN);
-		//	GUI_SetTextMode(GUI_TM_TRANS);
-
-		//	GUI_DispStringAt(Disp,57,10);
-
-		GUI_SetAlpha(0x90);
-		GUI_DrawBitmap(&bmapple, 300, 200);
-		GUI_SetAlpha(0);
-		//	GUI_DrawBitmapEx(&bmapple, 300, 200,320,220,1,1);
 		break;
 
 	case WM_INIT_DIALOG:

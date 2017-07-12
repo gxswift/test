@@ -145,9 +145,9 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 	{ BUTTON_CreateIndirect, "Button", ID_BUTTON_0, 100, 360, 60, 40, 0, 0x0, 0 },
 	{ PROGBAR_CreateIndirect, "Progbar", ID_PROGBAR_0, 10, 300, 220, 20, 0, 0x0, 0 },
 
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_0, 700, 50, 40, 300, 8, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_1, 650, 50, 40, 300, 8, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_2, 600, 50, 40, 300, 8, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_0, 730, 50, 40, 300, 8, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_1, 680, 50, 40, 300, 8, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_2, 630, 50, 40, 300, 8, 0x0, 0 },
 
 	// USER START (Optionally insert additional widgets)
 	// USER END
@@ -191,7 +191,7 @@ void DrawArcScale2(void) {
 }
 void DrawArcScale3(void) {
 	int x0 = 420;
-	int y0 = 300;
+	int y0 = 350;
 	int i;
 	char ac[4];
 	GUI_SetPenSize(4);
@@ -330,7 +330,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		GUI_AA_FillPolygon(Dial.aPoints1, countof(_aNeedle1), MAG * 520, MAG * 130);
 
 		GUI_SetColor(GUI_BLUE | 0x20000000);
-		GUI_AA_FillPolygon(Dial.aPoints, countof(_aNeedle), MAG * 420, MAG * 300);
+		GUI_AA_FillPolygon(Dial.aPoints, countof(_aNeedle), MAG * 420, MAG * 350);
 
 
 		//---------------------------------------------------------------------------------------

@@ -201,7 +201,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	  if (Sec%10>5)
 	  GUI_DrawBitmap(&bmlogo, 10, 8);
 	  else
-	  GUI_DrawBitmap(&bmQQ2, 10, 2);
+		  GUI_DrawBitmap(&bmQQlogo, 10, 2);
 
 	  GUI_SetColor(GUI_BLACK);
 	  GUI_SetFont(&GUI_Font20B_ASCII);

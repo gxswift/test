@@ -54,8 +54,8 @@
 */
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { WINDOW_CreateIndirect, "Window", ID_WINDOW_0, 0, 50, 800, 430, 0, 0x0, 0 },
-  { BUTTON_CreateIndirect, "CANCEL", ID_BUTTON_0, 700, 350, 60, 45, 0, 0x0, 0 },
-  { BUTTON_CreateIndirect, "OK", ID_BUTTON_1, 550, 350, 60, 45, 0, 0x0, 0 },
+  { BUTTON_CreateIndirect, "EXIT", ID_BUTTON_0, 680, 350, 80, 50, 0, 0x0, 0 },
+  { BUTTON_CreateIndirect, "OK", ID_BUTTON_1, 550, 350, 80, 50, 0, 0x0, 0 },
   { LISTWHEEL_CreateIndirect, "Listwheel", ID_LISTWHEEL_0, 540, 20, 80, 300, 0, 0x0, 0 },
   { LISTWHEEL_CreateIndirect, "Listwheel", ID_LISTWHEEL_1, 620, 20, 80, 300, 0, 0x0, 0 },
   { LISTWHEEL_CreateIndirect, "Listwheel", ID_LISTWHEEL_2, 700, 20, 80, 300, 0, 0x0, 0 },
@@ -118,7 +118,10 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
   switch (pMsg->MsgId) {
   case WM_PAINT:
-	  GUI_DrawGradientV(0, 0, 799, 439, GUI_WHITE, GUI_CYAN);
+
+	  Theme_Paint();
+
+
 	  GUI_SetTextMode(GUI_TM_TRANS);
 	  GUI_SetColor(GUI_BLACK);
 	  GUI_SetFont(&GUI_Font20B_1);
@@ -217,7 +220,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
 		  WM_DeleteWindow(pMsg->hWin);
-		  CreateWin1();
+		  CreateWinMain();
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
