@@ -271,6 +271,7 @@ WM_HWIN CreateHeaderWindow(void) {
 // USER START (Optionally insert additional public code)
 // USER END
 
+#define START 0
 WM_HWIN CreateWinMain(void);
 extern WM_HWIN CreateWin1(void);
 extern WM_HWIN CreateWin3(void);
@@ -291,9 +292,9 @@ void MainTask(void) {
 	PROGBAR_SetDefaultSkin(PROGBAR_SKIN_FLEX);
 	SPINBOX_SetDefaultSkin(SPINBOX_SKIN_FLEX);
 	FRAMEWIN_SetDefaultSkin(FRAMEWIN_SKIN_FLEX);
-
-
-
+	SLIDER_SetDefaultSkin(SLIDER_SKIN_FLEX);
+	DROPDOWN_SetDefaultSkin(DROPDOWN_SKIN_FLEX);
+#if START
 	GUI_RECT Rect = { 304, 360, 496, 390 };
 
 	for (i = 0; i < 3; i++)
@@ -311,7 +312,7 @@ void MainTask(void) {
 			GUI_Delay(20);
 		}
 	}
-
+#endif
 	GUI_EnableAlpha(1);
 //	CreateWin1();
 	CreateWinMain();

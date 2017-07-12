@@ -89,16 +89,14 @@ ColorChange C_Change[]=
 int *BKbmp[] = {&bmapple};
 
 int ColorSet;
-
-void Theme_Paint(int ColorSet,int BmpSet)
+static int color;
+void Theme_Paint()
 {
-	GUI_DrawGradientV(0,0,799,449,C_Change[ColorSet].C1,C_Change[ColorSet].C2);
+	GUI_DrawGradientV(0,0,799,449,C_Change[color].C1,C_Change[color].C2);
 	
 	GUI_SetAlpha(0x90);
-	GUI_DrawBitmap(BKbmp[BmpSet], 300, 200);
+	GUI_DrawBitmap(BKbmp[0], 300, 200);
 	GUI_SetAlpha(0);
-
-
 }
 
 
@@ -115,13 +113,13 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	WM_HWIN hItem;
 	int     NCode;
 	int     Id;
-	static int color;
+
 	// USER START (Optionally insert additional variables)
 	// USER END
 
 	switch (pMsg->MsgId) {
 	case WM_PAINT:
-		Theme_Paint (color,0);
+		Theme_Paint ();
 
 
 		break;

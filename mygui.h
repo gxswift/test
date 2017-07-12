@@ -45,7 +45,7 @@ typedef struct
 }ColorChange;
 
 extern ColorChange C_Change[];
-
+extern void Theme_Paint();
 
 
 #endif
