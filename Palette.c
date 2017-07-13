@@ -259,12 +259,15 @@ GUI_CONST_STORAGE GUI_FONT GUI_Fontpat = {
 */
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 	{ FRAMEWIN_CreateIndirect, "Palette", ID_FRAMEWIN_0, 0, 50, 800, 430, 0, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_0, 120, 60, 220, 20, 0, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_0, 120, 60, 220, 30, 0, 0x0, 0 },
 	{ SPINBOX_CreateIndirect, "Spinbox", ID_SPINBOX_0, 230, 90, 80, 35, 0, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_1, 120, 150, 220, 20, 0, 0x0, 0 },
+	
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_1, 120, 150, 220, 30, 0, 0x0, 0 },
 	{ SPINBOX_CreateIndirect, "Spinbox", ID_SPINBOX_1, 230, 180, 80, 35, 0, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_2, 120, 240, 220, 20, 0, 0x0, 0 },
+	
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_2, 120, 240, 220, 30, 0, 0x0, 0 },
 	{ SPINBOX_CreateIndirect, "Spinbox", ID_SPINBOX_2, 230, 270, 80, 35, 0, 0x0, 0 },
+	
 	{ BUTTON_CreateIndirect, "Exit", ID_BUTTON_0, 650, 150, 70, 50, 0, 0x0, 0 },
 	// USER START (Optionally insert additional widgets)
 	// USER END

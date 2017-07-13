@@ -106,7 +106,7 @@ extern WM_HWIN CreateFramewin1(void);
 extern WM_HWIN CreatePalette(void);
 //extern WM_HWIN Auto1(void);
 //extern WM_HWIN Auto2(void);
-int Dis_Flag;
+//int Dis_Flag;
 
 static void _cbDialog(WM_MESSAGE * pMsg) {
 	WM_HWIN      hItem;
@@ -146,7 +146,12 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 				switch (ICONVIEW_GetSel(pMsg->hWinSrc))//pMsg->hWinSrc
 				{
+				case 7:
+					hItem = pMsg->hWin;
+					GUI_EndDialog(hItem, 1);
+					CreateWinMain();
 
+					break;
 				default: break;
 				}
 
@@ -159,12 +164,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 
 				switch (ICONVIEW_GetSel(pMsg->hWinSrc))//pMsg->hWinSrc
 				{
-				case 7:
-					hItem = pMsg->hWin;
-					GUI_EndDialog(hItem, 1);
-					CreateWinMain();
 
-					break;
 				default:
 					break;
 				}

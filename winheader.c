@@ -105,12 +105,12 @@ WM_HWIN WIN_Header;
 static void _cbDialog(WM_MESSAGE * pMsg) {
   int NCode;
   int Id;
-  WM_HWIN hWin;
-  MENU_Handle hMenu;
-  MENU_Handle hMenuFile;
-  MENU_Handle hMenuEdit;
-  MENU_Handle hMenuHelp;
-  MENU_Handle hMenuRecent;
+//  WM_HWIN hWin;
+//  MENU_Handle hMenu;
+//  MENU_Handle hMenuFile;
+//  MENU_Handle hMenuEdit;
+//  MENU_Handle hMenuHelp;
+//  MENU_Handle hMenuRecent;
   char p[12];
   // USER START (Optionally insert additional variables)
   // USER END
@@ -198,9 +198,9 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	  GUI_DrawGradientV(0, 0, 800, 25, 0xFFCCCC, GUI_LIGHTBLUE);
 //	  GUI_DrawGradientV(0, 26, 800, 50, GUI_BLUE, 0xFFCCCC);
 	  GUI_DrawGradientV(0, 26, 800, 50, 0xFF7070, 0x00FF2020);
-	  if (Sec%10>5)
-	  GUI_DrawBitmap(&bmlogo, 10, 8);
-	  else
+//	  if (Sec%10>5)
+//	  GUI_DrawBitmap(&bmlogo, 10, 8);
+//	  else
 		  GUI_DrawBitmap(&bmQQlogo, 10, 2);
 
 	  GUI_SetColor(GUI_BLACK);
@@ -271,17 +271,16 @@ WM_HWIN CreateHeaderWindow(void) {
 // USER START (Optionally insert additional public code)
 // USER END
 
-#define START 0
+#define START 1
 WM_HWIN CreateWinMain(void);
-extern WM_HWIN CreateWin1(void);
-extern WM_HWIN CreateWin3(void);
 void MainTask(void) {
 	int i, j;
+		GUI_RECT Rect = { 304, 360, 496, 390 };
 	WM_SetCreateFlags(WM_CF_MEMDEV);
 	GUI_Init();
 	Date.Year = 2017;
-	Date.Month = 6;
-	Date.Day = 29;
+	Date.Month = 7;
+	Date.Day = 7;
 	Hour = 20;
 	Min = 24;
 	Sec = 35;
@@ -295,15 +294,17 @@ void MainTask(void) {
 	SLIDER_SetDefaultSkin(SLIDER_SKIN_FLEX);
 	DROPDOWN_SetDefaultSkin(DROPDOWN_SKIN_FLEX);
 #if START
-	GUI_RECT Rect = { 304, 360, 496, 390 };
 
+			GUI_DrawBitmap(&bmgitlogo, 290, 10);
+			GUI_SetFont(&GUI_Font24B_ASCII);
+			GUI_DispStringHCenterAt("Build software better, together.", 400, 310);
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 65; j++)
 		{
-			GUI_DrawBitmap(&bmgitlogo, 290, 10);
-			GUI_SetFont(&GUI_Font24B_ASCII);
-			GUI_DispStringHCenterAt("Build software better, together.", 400, 310);
+
+			GUI_SetColor(GUI_BLACK);
+			GUI_FillRect(305,360,495,390);
 			GUI_SetColor(GUI_WHITE);
 			GUI_DrawRoundedFrame(300,355,500,395,10,2);
 			GUI_SetClipRect(&Rect);

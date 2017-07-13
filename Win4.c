@@ -22,7 +22,7 @@
 // USER END
 
 #include "DIALOG.h"
-
+#include "mygui.h"
 /*********************************************************************
 *
 *       Defines
@@ -70,7 +70,7 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   // USER END
 };
 static const GUI_WIDGET_CREATE_INFO _bDialogCreate[] = {
-	{ FRAMEWIN_CreateIndirect, "Number Pad", GUI_ID_USER + 12, 400, 130, 170, 240, 0, 0x0, 0 },
+	{ FRAMEWIN_CreateIndirect, "Number Pad", GUI_ID_USER + 12, 400, 130, 170, 250, 0, 0x0, 0 },
 	{ BUTTON_CreateIndirect, "7", GUI_ID_USER + 7, 10, 10, 40, 40 },
 	{ BUTTON_CreateIndirect, "8", GUI_ID_USER + 8, 60, 10, 40, 40 },
 	{ BUTTON_CreateIndirect, "9", GUI_ID_USER + 9, 110, 10, 40, 40 },
@@ -114,7 +114,7 @@ static void _cbDialogNumPad(WM_MESSAGE * pMsg)
 		hItem = pMsg->hWin;
 		FRAMEWIN_SetTextColor(hItem,GUI_BLUE);
 		FRAMEWIN_SetTextAlign(hItem,GUI_TA_HCENTER);
-		FRAMEWIN_SetTitleHeight(hItem, 20);
+		FRAMEWIN_SetTitleHeight(hItem, 30);
 		FRAMEWIN_SetFont(hItem,&GUI_Font16B_1);
 		FRAMEWIN_AddMinButton(hItem, FRAMEWIN_BUTTON_RIGHT,0);
 		FRAMEWIN_SetMoveable(hItem, 1);

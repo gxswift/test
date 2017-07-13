@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include "DIALOG.h"
 #include "stdio.h"
+#include "mygui.h"
 
 #define countof(Obj) (sizeof(Obj) / sizeof(Obj[0]))
 #define DEG2RAD      (3.1415926f / 180)
@@ -145,9 +146,9 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 	{ BUTTON_CreateIndirect, "Button", ID_BUTTON_0, 100, 360, 60, 40, 0, 0x0, 0 },
 	{ PROGBAR_CreateIndirect, "Progbar", ID_PROGBAR_0, 10, 300, 220, 20, 0, 0x0, 0 },
 
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_0, 730, 50, 40, 300, 8, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_1, 680, 50, 40, 300, 8, 0x0, 0 },
-	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_2, 630, 50, 40, 300, 8, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_0, 730, 50, 40, 310, 8, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_1, 680, 50, 40, 310, 8, 0x0, 0 },
+	{ SLIDER_CreateIndirect, "Slider", ID_SLIDER_2, 630, 50, 40, 310, 8, 0x0, 0 },
 
 	// USER START (Optionally insert additional widgets)
 	// USER END
@@ -233,6 +234,10 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	WM_HWIN hItem;
 	int     NCode;
 	int     Id;
+	GUI_RECT pRect = { 0, 0, 300, 300 };
+	GUI_RECT pRect1 = { 220, 230, 400, 300 };
+	GUI_RECT pRect2 = { 400, 30, 200, 200 };
+	GUI_RECT pRect3 = { 220, 20, 200, 200 };
 	//	char pnt[20];
 	//	static WM_HTIMER hTimerTime; 
 	//	GUI_RECT pRect = {15,45,225,275};
@@ -364,8 +369,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		//					GUI_MEMDEV_DeleteAuto(&AutoDev);
 
 		PROGBAR_SetValue(WM_GetDialogItem(pMsg->hWin, ID_PROGBAR_0), 100 - t0 / 360);
-		//WM_InvalidateArea(&pRect);
-		WM_InvalidateWindow(pMsg->hWin);
+		WM_InvalidateArea(&pRect);
+		//WM_InvalidateWindow(pMsg->hWin);
 		break;
 
 	case WM_NOTIFY_PARENT:
@@ -387,6 +392,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				// USER START (Optionally insert code for reacting on notification message)
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_SLIDER_0);
 				m0 = SLIDER_GetValue(hItem);
+			//WM_InvalidateArea(&pRect1);
 				WM_InvalidateWindow(pMsg->hWin);
 				// USER END
 				break;
@@ -412,7 +418,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				// USER START (Optionally insert code for reacting on notification message)
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_SLIDER_1);
 				m1 = SLIDER_GetValue(hItem);
-				WM_InvalidateWindow(pMsg->hWin);
+			WM_InvalidateArea(&pRect2);
+				//WM_InvalidateWindow(pMsg->hWin);
 				// USER END
 				break;
 				// USER START (Optionally insert additional code for further notification handling)
@@ -440,7 +447,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				// USER START (Optionally insert code for reacting on notification message)
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_SLIDER_2);
 				m2 = SLIDER_GetValue(hItem);
-				WM_InvalidateWindow(pMsg->hWin);
+			WM_InvalidateArea(&pRect3);
+			//	WM_InvalidateWindow(pMsg->hWin);
 				// USER END
 				break;
 				// USER START (Optionally insert additional code for further notification handling)

@@ -23,6 +23,7 @@
 
 #include "DIALOG.h"
 #include "GUI.h"
+#include "mygui.h"
 /*********************************************************************
 *
 *       Defines

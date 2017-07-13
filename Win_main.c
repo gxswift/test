@@ -9727,19 +9727,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 					hItem = pMsg->hWin;
 					GUI_EndDialog(hItem, 1);
 					break;
-				default: break;
-				}
-
-				break;
-
-			case WM_NOTIFICATION_SCROLL_CHANGED:
-
-				break;
-			case WM_NOTIFICATION_RELEASED:
-
-				switch (ICONVIEW_GetSel(pMsg->hWinSrc))//pMsg->hWinSrc
-				{
-				case 0:
+								case 0:
 					hItem = pMsg->hWin;
 					GUI_EndDialog(hItem, 1);
 					CreateWin6();
@@ -9783,6 +9771,62 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 					WM_DeleteWindow(pMsg->hWin);
 					CreateWin3();
 					break;
+				default: break;
+				}
+
+				break;
+
+			case WM_NOTIFICATION_SCROLL_CHANGED:
+
+				break;
+			case WM_NOTIFICATION_RELEASED:
+
+				switch (ICONVIEW_GetSel(pMsg->hWinSrc))//pMsg->hWinSrc
+				{
+//				case 0:
+//					hItem = pMsg->hWin;
+//					GUI_EndDialog(hItem, 1);
+//					CreateWin6();
+//					break;				
+//				case 1:
+//					hItem = pMsg->hWin;
+//					GUI_EndDialog(hItem, 1);
+//					//WM_HideWindow(hItem);
+//					CreateFramewin1();
+//					break;
+//				case 2:
+//					hItem = pMsg->hWin;
+//					GUI_EndDialog(hItem, 1);
+//					CreateWin4();
+//					break;
+//				case 3:
+//					Clock_Fun();
+//					hItem = pMsg->hWin;
+//					GUI_EndDialog(hItem, 1);
+//					break;
+//				case 4:
+//					Select = 0;
+//					hItem = pMsg->hWin;
+//					GUI_EndDialog(hItem, 1);
+//					CreatePalette();
+//					break;
+//				case 5:
+//					CreateTEXT();
+//					hItem = pMsg->hWin;
+//					GUI_EndDialog(hItem, 1);
+//					break;
+
+//				case 6:
+//					hItem = pMsg->hWin;
+//					GUI_EndDialog(hItem, 1);
+//					CreateWin1();
+//					break;
+//				case 8:
+//					Dis_Flag = 1;
+//					hItem = pMsg->hWin;
+//					WM_DeleteWindow(pMsg->hWin);
+//					CreateWin3();
+//					break;
 				default:
 					break;
 				}

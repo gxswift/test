@@ -88,7 +88,7 @@ ColorChange C_Change[]=
 	{ 0x800FFF, GUI_LIGHTBLUE}
 };
 
-int *BKbmp[] = {&bmapple,&bmQQ};
+const GUI_BITMAP *BKbmp[] = {&bmapple,&bmQQ};
 
 int ColorSet;
 static int color;
