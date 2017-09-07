@@ -210,7 +210,9 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	  //SPINBOX_SetValue(hItem, num[4] * 10 + num[5]);
 	  hItem = WM_GetDialogItem(pMsg->hWin, ID_MULTIEDIT_0);
 	 MULTIEDIT_SetText(hItem, num);
-
+  	MULTIEDIT_EnableBlink(hItem, 500, 1); 
+		  WM_SetFocus(hItem);  
+		  MULTIEDIT_SetCursorOffset(hItem,sizeof(num));
 	  break;
   case WM_PAINT:
 
@@ -237,7 +239,10 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	  hItem = WM_GetDialogItem(pMsg->hWin, ID_MULTIEDIT_0);
 	  MULTIEDIT_SetFont(hItem, &GUI_FontD48x64);
 	  MULTIEDIT_EnableBlink(hItem,0,0);
-
+   hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_1);   
+		  BUTTON_SetFocussable(hItem, 0);
+   hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_3); 
+		  BUTTON_SetFocussable(hItem, 0);
 	  break;
   case WM_NOTIFY_PARENT:
     Id    = WM_GetId(pMsg->hWinSrc);
